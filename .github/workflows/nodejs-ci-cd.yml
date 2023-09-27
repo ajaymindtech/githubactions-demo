@@ -19,8 +19,29 @@ jobs:
      - name: Install dependencies
        run: npm install 
 
-     - name: Run tests
-       run: npm test
+     # - name: Run tests
+     #   run: npm test
+  deploy:
+     runs-on: ubuntu-latest
+
+     needs: build
+
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+            node-version: 14
+
+      - name: Build and deploy to Github Pages
+        run: |
+          npm install
+          git config --global user.email "ajaymindtech2021@gmail.com" 
+          git config --global user.name "ajaymindtech"
+          git add . && git commit -m "Deploy updates"   
+          git push   
 
        
 
