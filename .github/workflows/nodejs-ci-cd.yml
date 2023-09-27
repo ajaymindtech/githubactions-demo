@@ -40,6 +40,7 @@ jobs:
           npm install
           git config --global user.email "ajaymindtech2021@gmail.com" 
           git config --global user.name "ajaymindtech"
+          git status
           git add . && git commit -m "Deploy updates"   
           git push   
 
